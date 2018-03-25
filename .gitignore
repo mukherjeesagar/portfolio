@@ -1,0 +1,10 @@
+# python stuff
+**/*__pycache__/
+**/*.ipynb_checkpoints
+
+# data
+**/*data/
+
+# testing notebooks
+**/*_test.ipynb
+
