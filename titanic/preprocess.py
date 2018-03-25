@@ -6,14 +6,15 @@ Script for pre-process of the titanic data
 import numpy as np
 import pandas as pd
 import re
-import feature_engineering as fe
-
+import feature_engineering as fea_eng
+import feature_extraction as fea_ext
 
 def main(path):
     df = pd.read_csv(path)
     print('Read {}'.format(path))
     df = df.set_index('PassengerId')
-    df = fe.feature_engineering(df)
+    df = fea_eng.feature_engineering(df)
+    df = fea_ext.feature_extraction(df)
     df = df.drop(['Name', 'Ticket', 'Cabin'], axis=1)
 
     # Save file, added "-c" as suffix

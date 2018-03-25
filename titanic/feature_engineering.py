@@ -1,5 +1,9 @@
 """
 Feature Engineering - TITANIC
+1. extract names, titles
+2. extract fancy titles
+3. extract u15 and many siblings
+4. extract is_alone
 """
 
 import numpy as np
@@ -10,6 +14,8 @@ import re
 def feature_engineering(df):
     """
     Feature Engineering of the TITANIC data set
+    input df, output df
+    Process:
     1. extract names, titles
     2. extract fancy titles
     3. extract u15 and many siblings
@@ -22,7 +28,6 @@ def feature_engineering(df):
     return df
 
 # FEATURE: Extract surname and titles
-
 def fea_extract_names(df):
     surnames = []
     titles = []
@@ -44,9 +49,7 @@ def fea_extract_names(df):
     df['Title'] = titles
     return df, titles
 
-
 # FEATURE: Fancy_title
-
 def fea_fancy_title(df, titles):
 
     def fancy_title(title):
@@ -61,8 +64,6 @@ def fea_fancy_title(df, titles):
     return df
 
 # FEATURE: U15 and sibilings > 3
-
-
 def fea_u15_many_silbings(df):
 
     def u15_many_siblings(row):
@@ -75,8 +76,6 @@ def fea_u15_many_silbings(df):
     return df
 
 # FEATURE: is_alone
-
-
 def fea_is_alone(df):
 
     def is_lone_traveller(row):
