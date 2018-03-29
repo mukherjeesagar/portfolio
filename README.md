@@ -18,6 +18,12 @@ Iconic Titanic data set.
 * [titanic-01](./titanic/titanic-01-cleaning.ipynb): data cleaning and inspection
 * [titanic-02](./titanic/titanic-02-visulization.ipynb): data visulization and some feature engineering
 
+## Data Visulization
+
+### Fertility Rates
+
+<p align="center"><img src="./data_viz/UN_fertility/Fertility-Rates.png" alt="IMG"| style="height: 300px;"/></p>
+
 ## Others:
 
 * Analysis of my running GPS data: https://github.com/pyian/tri-analysis
