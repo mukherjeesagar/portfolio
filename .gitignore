@@ -4,7 +4,13 @@
 
 # data
 **/*data/
+**/*archive/
 
 # testing notebooks
 **/*_test.ipynb
+*/USA_approval_rating
+
+# testing images
+**/*_test.png
+**/*_test.tif
 
