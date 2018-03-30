@@ -17,6 +17,7 @@ Iconic Titanic data set.
 
 * [titanic-01](./titanic/titanic-01-cleaning.ipynb): data cleaning and inspection
 * [titanic-02](./titanic/titanic-02-visulization.ipynb): data visulization and some feature engineering
+* [titanic-03](./titanic/titanic-03-feature_selection.ipynb): more feature engineering and tokenize the data for model building preparation
 
 ## Data Visulization
 
