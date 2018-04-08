@@ -15,7 +15,7 @@ def feature_extraction(df):
     df = label_male(df)
     df = label_embarked(df)
     df = extract_title(df)
-    df = process_age(df)
+    # df = process_age(df)  Done separately
     return df
 
 
@@ -61,7 +61,7 @@ def extract_title(df):
     return df
 
 # process age
-def process_age(df):
+def process_age(df_train, df_test):
 
     def cat_age(age):
         if age <= 5:
@@ -79,16 +79,32 @@ def process_age(df):
 
     def fillna_median(x):
         return x.fillna(x.median())
-        df['cat_age'] = df.Age.apply(cat_age)
 
-    df.Age = (df[['Age', 'Title']]
+    df_train['cat_age'] = df_train.Age.apply(cat_age)
+    df_test['cat_age'] = df_test.Age.apply(cat_age)
+
+    # use training data to fill test data NAs
+    df_train.Age = (df_train[['Age', 'Title']]
+                .groupby('Title')
+                .transform(fillna_median))
+    df_test.Age = (df_test[['Age', 'Title']]
                 .groupby('Title')
                 .transform(fillna_median))
 
-    df.cat_age = (df[['cat_age', 'Title']]
+    # TODO: fill df_test with df_train info
+    # print(df_train.Age)
+
+    df_train.cat_age = (df_train[['cat_age', 'Title']]
+                    .groupby('Title')
+                    .transform(fillna_median))
+    df_test.cat_age = (df_test[['cat_age', 'Title']]
                     .groupby('Title')
                     .transform(fillna_median))
 
-    df.cat_age = df.cat_age.astype(int)
+    # print(df_test)
+
+    df_train.cat_age = df_train.cat_age.astype(int)
+    df_test.cat_age = df_test.cat_age.fillna(df_train.cat_age.median())
+    df_test.cat_age = df_test.cat_age.astype(int)
     
-    return df
+    return df_train, df_test
